@@ -1,0 +1,12 @@
+OrmClassBegin(Student, "student")
+OrmField(Id, "id", "%llu", "%09llu")
+OrmCStringField(Name, "name", "%[^,]", "%s")
+OrmField(Grade, "grade", "%lf", "%0.6lf")
+OrmClassEnd(Student, "student")
+
+OrmClassBegin(Course, "course")
+OrmCStringField(Code, "code", "%%[^,]", "%s")
+OrmCStringField(Title, "title", "%[^,]", "%s")
+OrmField(Size, "size", "%d", "%d")
+OrmField(Rating, "rating", "%lf", "%0.6lf")
+OrmClassEnd(Course, "course")

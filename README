@@ -1,0 +1,9 @@
+TO IMPROVE
+  - Case (in-)sensitivity
+  - Delimiter / Special chars handling (eg. "" '', ``, /\, <>, ,)
+  - Trimming and space skipping
+  - Error / Exception handling
+  - Complex Fields
+      - List / Set as Field (Simple)
+      - Map as Field (Easy OTM, more work in MTO)
+      - Struct / Object as Field (More work)
