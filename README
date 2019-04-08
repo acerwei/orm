@@ -1,3 +1,8 @@
+A Simple C++ ORM (Object-Relation / Object-Map Mapping)
+
+Usage: see test
+Compile: g++ orm_test.cc
+
 TO IMPROVE
   - Case (in-)sensitivity
   - Delimiter / Special chars handling (eg. "" '', ``, /\, <>, ,)
@@ -7,3 +12,7 @@ TO IMPROVE
       - List / Set as Field (Simple)
       - Map as Field (Easy OTM, more work in MTO)
       - Struct / Object as Field (More work)
+
+
+
+-Author: Acer Wei (魏沐风) acer.king.wei@gmail.com
