@@ -1,5 +1,10 @@
 A Simple C++ ORM (Object-Relation / Object-Map Mapping)
 
+Current Implementations:
+    -Object to Json
+    -Object to XML
+    -Json to Object
+
 Usage: see test
 Compile: g++ orm_test.cc
 
