@@ -6,10 +6,10 @@
 //REF: ORM_OTM.h TO IMPROVE
 #ifdef ORM_MTO_JSON
 #define OrmClassBegin(Obj, Map)  \
-    int jsonUnmarshal(Obj &obj, char *buf) { \
+    OrmError jsonUnmarshal(Obj &obj, char* buf) { \
+        char * bpos = strstr(buf, Map); \
         try { \
-            char * bpos = strstr(buf, Map); \
-            if (!bpos) return ORM_CLASS_MISMATCH; \
+            if (!bpos) return {ORM_CLASS_MISMATCH, bpos}; \
             bpos = buf + strlen(Map) + 1; \
             ORM_SKIPPING(bpos) bpos++; \
             char * cpos = strstr(bpos, "\':"); \ 
@@ -36,14 +36,14 @@
                 }
 #define OrmClassEnd(Obj, Map) \
                 else { \
-                    return ORM_UNEXPECTEDFIELD; \
+                    return {ORM_UNEXPECTEDFIELD, bpos}; \
                 } \
             } \
         } \
         catch (...) { \
-            return ORM_UNMARSHAL_EXCEPTION; \
+            return {ORM_UNMARSHAL_EXCEPTION, bpos}; \
         } \
-        return 0; \
+        return {0, NULL}; \
     }
 
 #include ORM_PROTO_DEF

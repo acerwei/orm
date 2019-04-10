@@ -15,20 +15,20 @@ void testUnmarshal() {
     char buff[1024];
     orm_test::Student b;
     char *buffb11 = "student{\'id\':000000123,\'name\':\'siqiwei\',\'grade\':4.990000}";
-    int res = orm_test::jsonUnmarshal(b, buffb11);
-    printf("rest=%d, %s\n", res, orm_test::jsonMarshal(b, buff, sizeof(buff)));
+    auto res = orm_test::jsonUnmarshal(b, buffb11);
+    printf("rest=%d, %s\n", res.err_code, orm_test::jsonMarshal(b, buff, sizeof(buff)));
     char *buffb12 = "student{\'name\': \'siqiwei\', \'id\': 000000123, \'grade\':4.990000}";
     res = orm_test::jsonUnmarshal(b, buffb12);
-    printf("rest=%d, %s\n", res, orm_test::jsonMarshal(b, buff, sizeof(buff)));
+    printf("rest=%d, %s\n", res.err_code, orm_test::jsonMarshal(b, buff, sizeof(buff)));
     char *buffb13 = "student{\'name\':\'siqiwei\', \n  \'id\':000000123,4.990000}";
     res = orm_test::jsonUnmarshal(b, buffb13);
-    printf("rest=%d, %s\n", res, orm_test::jsonMarshal(b, buff, sizeof(buff)));
+    printf("rest=%d, %s\n", res.err_code, orm_test::jsonMarshal(b, buff, sizeof(buff)));
     char *buffb2 = "stunt{000000124,siqiwei,4.991000}";
     res = orm_test::jsonUnmarshal(b, buffb2);
-    printf("rest=%d\n", res);
+    printf("rest=%d at %s\n", res.err_code, res.err_pos);
     char *buffb3 = "student{\'name\':\'siqiwei\',\'id\':000000123,\'dd\': 123}";
     res = orm_test::jsonUnmarshal(b, buffb3);
-    printf("rest=%d\n", res);
+    printf("rest=%d at %s\n", res.err_code, res.err_pos);
 }
 
 int main() {
