@@ -1,6 +1,9 @@
+#include <ctype.h>
+#ifndef ORM_SKIPPING
+#define ORM_SKIPPING(buff) while(buff && isspace(*buff)) buff++;
+#endif
 //************************************************************* Mapping / Relation to Object************************************************/
 //REF: ORM_OTM.h TO IMPROVE
-
 #ifdef ORM_MTO_JSON
 #define OrmClassBegin(Obj, Map)  \
     int jsonUnmarshal(Obj &obj, char *buf) { \
@@ -8,7 +11,7 @@
             char * bpos = strstr(buf, Map); \
             if (!bpos) return ORM_CLASS_MISMATCH; \
             bpos = buf + strlen(Map) + 1; \
-            bpos++; \
+            ORM_SKIPPING(bpos) bpos++; \
             char * cpos = strstr(bpos, "\':"); \ 
             while (cpos) { \
                 if (!strcmp(bpos, "NULL")) {}
@@ -17,7 +20,7 @@
                     bpos = cpos + 2; \
                     sscanf(bpos, informat, &obj.MTO_ACCESS(field)); \
                     bpos = strchr(bpos, ',');  \ 
-                    if (bpos) bpos+=2; \
+                    if (bpos) {bpos++; ORM_SKIPPING(bpos) bpos++;} \
                     else break; \
                     cpos = strstr(bpos, "\':"); \    
                 }
@@ -27,7 +30,7 @@
                     cpos = strchr(bpos, '\'');  \     
                     memmove(&obj.MTO_ACCESS(field), bpos, cpos - bpos); \
                     bpos = strchr(cpos, ','); \
-                    if (bpos) bpos+=2; \
+                    if (bpos) {bpos++; ORM_SKIPPING(bpos) bpos++;} \
                     else break; \
                     cpos = strstr(bpos, "\':"); \
                 }
@@ -49,3 +52,5 @@
 #undef OrmField
 #undef OrmClassEnd
 #endif //ORM_MTO_JSON
+
+#undef ORM_SKIPPING

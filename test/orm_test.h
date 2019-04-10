@@ -1,7 +1,6 @@
 #include <cstdio>
-#include <cstring>
 #include <cstdlib>
-
+#include <cstring>
 namespace orm_test
 {
 struct Student {
