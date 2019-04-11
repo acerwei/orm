@@ -37,7 +37,6 @@
 #undef OrmField
 #undef OrmCStringField
 #undef OrmClassEnd
-
 #endif //ORM_OTM_JSON
 
 

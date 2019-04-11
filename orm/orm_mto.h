@@ -58,5 +58,6 @@
 #undef OrmClassEnd
 #endif //ORM_MTO_JSON
 
+
 #undef ORM_SKIPPING
 #undef MTO_ACCESS
