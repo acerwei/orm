@@ -1,3 +1,6 @@
+#ifndef OTM_ACCESS
+#define OTM_ACCESS(x) x
+#endif
 //*************************************************************Object to Mapping / Relation************************************************/
 //TO IMPROVE
 //  - Case (in-)sensitivity
@@ -62,6 +65,6 @@
 #undef OrmClassEnd
 #endif //ORM_OTM_XML
 
-
+#undef OTM_ACCESS
 
 

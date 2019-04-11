@@ -16,8 +16,6 @@ struct Course {
 };
 
 #define ORM_PROTO_DEF "../test/ormproto.h"
-#define OTM_ACCESS(x) x
-#define MTO_ACCESS(x) x
 #define ORM_OTM_JSON true
 #define ORM_MTO_JSON true
 #define ORM_OTM_XML true

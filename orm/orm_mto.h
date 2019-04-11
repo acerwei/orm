@@ -1,6 +1,11 @@
 #include <ctype.h>
+
 #ifndef ORM_SKIPPING
 #define ORM_SKIPPING(buff) while(buff && isspace(*buff)) buff++;
+#endif
+
+#ifndef MTO_ACCESS
+#define MTO_ACCESS(x) x
 #endif
 //************************************************************* Mapping / Relation to Object************************************************/
 //REF: ORM_OTM.h TO IMPROVE
@@ -54,3 +59,4 @@
 #endif //ORM_MTO_JSON
 
 #undef ORM_SKIPPING
+#undef MTO_ACCESS
